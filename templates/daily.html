@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Planner - Smart Life Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📅 Daily Planner</h1>
+        <p>Organize your daily activities and tasks.</p>
+        
+        <!-- Task Addition Form -->
+        <form method="POST">
+            <input type="text" name="task" placeholder="Enter a new task..." required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <br>
+        <h3>Your Tasks:</h3>
+        <ul style="list-style-type: none; padding: 0; text-align: left;">
+            {% for t in tasks %}
+                <li style="background: #f1f3f5; padding: 8px 12px; margin: 5px 0; border-radius: 4px;">{{ t[0] }}</li>
+            {% else %}
+                <li style="color: #666; text-align: center;">No tasks added yet.</li>
+            {% endfor %}
+        </ul>
+
+        <br>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>
